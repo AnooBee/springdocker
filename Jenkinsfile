@@ -9,10 +9,12 @@ pipeline {
         }
 
         steps {
-            def props = readJSON file: 'out.json', returnPojo: true
-            assert props['name'] == 'kitsune'
-            props.each { key, value ->
-                echo "Walked through key $key and value $value"
+            script {
+                def props = readJSON file: 'out.json', returnPojo: true
+                assert props['name'] == 'kitsune'
+                props.each { key, value ->
+                    echo "Walked through key $key and value $value"
+                }
             }
         }
     }
