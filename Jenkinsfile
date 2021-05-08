@@ -17,9 +17,9 @@ pipeline {
                     echo "Walked through key $key and value $value"
                 }
 
-                String currName = "${props.artifacts[1]}"
+                String currName = "${props.artifacts.group}"
                 // The above code works...
-                echo currName
+                echo group name: $currName
 
                 // The code below does not
                 props['artifacts[1]'] = "1.2.0"
