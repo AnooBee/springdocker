@@ -23,7 +23,7 @@ pipeline {
 
                 // The code below does not
                 props['name'] = "1.2.0"
-                scope.writeJSON file: "newJson.json", json: props
+                writeJSON file: "newJson.json", json: props
 
                 def newProps = readJSON file: 'newJson.json'
 
