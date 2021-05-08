@@ -7,23 +7,24 @@ pipeline {
   stages {
     stage('json') {
       steps {
-        echo 'start'
-        readMavenPom(file: 'pom.xml')
-        writeJSON(json: '{\"name\":\"kitsune\",\"age\":22,\"artifacts\":[\"id: 1.0\",\"group: groupname\"]}', pretty: 2, file: 'out.json')
+          echo 'start'
+          readMavenPom(file: 'pom.xml')
+          //writeJSON(json: '{\"name\":\"kitsune\",\"age\":22,\"artifacts\":[\"id: 1.0\",\"group: groupname\"]}', pretty: 2, file: 'out.json')
+          String jsonStr = '''{"name":"kitsune","age":"22","artifacts":[{"id": "1.0","group": "groupname1"}]'''
+          writeJSON(json: jsonStr, pretty:2, file: 'out.json')
+
         }
      }
      stage('read json') {
         steps {
             script {
                 def props = readJSON file: 'out.json'
-                /*assert props['name'] == 'kitsune'
+                assert props['name'] == 'kitsune'
                 props.each { key, value ->
                     echo "Walked through key $key and value $value  "
 
-                }*/
-                for (element in props) {
-                    echo "$element.key : $element.value"
                 }
+
 
                 String currName = "${props.artifacts[1]}"
                 echo "group is: $currName"
