@@ -17,7 +17,7 @@ pipeline {
                     echo "Walked through key $key and value $value"
                 }
 
-                String currName = "${props.name}"
+                String currName = "${props.artifacts[0].group}"
                 // The above code works...
                 echo currName
 
