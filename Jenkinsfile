@@ -7,12 +7,13 @@ pipeline {
   stages {
     stage('json') {
       steps {
-          echo 'start'
-          readMavenPom(file: 'pom.xml')
-          //writeJSON(json: '{\"name\":\"kitsune\",\"age\":22,\"artifacts\":[\"id: 1.0\",\"group: groupname\"]}', pretty: 2, file: 'out.json')
-          String jsonStr = '''{"name":"kitsune","age":"22","artifacts":[{"id": "1.0","group": "groupname1"}]'''
-          writeJSON(json: jsonStr, pretty:2, file: 'out.json')
-
+          script {
+              echo 'start'
+              readMavenPom(file: 'pom.xml')
+              //writeJSON(json: '{\"name\":\"kitsune\",\"age\":22,\"artifacts\":[\"id: 1.0\",\"group: groupname\"]}', pretty: 2, file: 'out.json')
+              String jsonStr = '''{"name":"kitsune","age":"22","artifacts":[{"id": "1.0","group": "groupname1"}]'''
+              writeJSON(json: jsonStr, pretty: 2, file: 'out.json')
+          }
         }
      }
      stage('read json') {
