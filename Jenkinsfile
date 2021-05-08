@@ -17,12 +17,12 @@ pipeline {
                     echo "Walked through key $key and value $value"
                 }
 
-                String currName = "${props.artifacts[0]}"
+                String currName = "${props.artifacts[1]}"
                 // The above code works...
                 echo currName
 
                 // The code below does not
-                props['name'] = "1.2.0"
+                props['artifacts[1]'] = "1.2.0"
                 writeJSON file: "newJson.json", json: props
 
                 def newProps = readJSON file: 'newJson.json'
