@@ -6,13 +6,15 @@ pipeline {
         echo 'start'
         readMavenPom(file: 'pom.xml')
         writeJSON(json: '{"name":"kitsune"}', pretty: 2, file: 'out.json')
-
-        def props = readJSON file: 'out.json', returnPojo: true
-        assert props['name'] == 'kitsune'
-        props.each { key, value ->
-            echo "Walked through key $key and value $value"
         }
-      }
+
+        steps {
+            def props = readJSON file: 'out.json', returnPojo: true
+            assert props['name'] == 'kitsune'
+            props.each { key, value ->
+                echo "Walked through key $key and value $value"
+            }
+        }
     }
 
   }
