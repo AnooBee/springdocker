@@ -27,13 +27,13 @@ pipeline {
                 }
 
 
-                String currName = "${props.artifacts[1]}"
+                String currName = "${props.artifacts[0].group}"
                 echo "group is: $currName"
 
 
 
                 // The code below does not
-                props['artifacts[1]'] = "1.2.0"
+                props['artifacts[0].group'] = "1.2.0"
                 writeJSON file: "newJson.json", json: props
 
                 def newProps = readJSON file: 'newJson.json'
