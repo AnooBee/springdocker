@@ -33,7 +33,7 @@ pipeline {
 
 
                 // The code below does not
-                props['artifacts[0].group'] = "1.2.0"
+                props.artifacts[0].group = "1.2.0"
                 writeJSON file: "newJson.json", json: props
 
                 def newProps = readJSON file: 'newJson.json'
