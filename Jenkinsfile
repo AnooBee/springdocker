@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo 'start'
         readMavenPom(file: 'pom.xml')
-        writeJSON(json: '{"name":"kitsune"}', pretty: 2, file: 'out.json')
+        writeJSON(json: '"{\"name\":\"kitsune\",\"age\":22,\"artifacts\":[\"id: 1.0\",\"group: groupname\"]}"', pretty: 2, file: 'out.json')
         }
      }
      stage('read json') {
