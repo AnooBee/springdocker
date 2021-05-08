@@ -16,6 +16,18 @@ pipeline {
                 props.each { key, value ->
                     echo "Walked through key $key and value $value"
                 }
+
+                String currName = "${props.name}"
+                // The above code works...
+                echo currName
+
+                // The code below does not
+                props['name'] = "1.2.0"
+                scope.writeJSON file: "newJson.json", json: props
+
+                def newProps = readJSON file: 'newJson.json'
+
+                echo newProps.toString()
             }
         }
      }
