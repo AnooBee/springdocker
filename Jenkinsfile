@@ -7,7 +7,8 @@ pipeline {
         readMavenPom(file: 'pom.xml')
         writeJSON(json: '{"name":"kitsune"}', pretty: 2, file: 'out.json')
         }
-
+     }
+     stage('read json') {
         steps {
             script {
                 def props = readJSON file: 'out.json', returnPojo: true
@@ -17,6 +18,7 @@ pipeline {
                 }
             }
         }
+      }
     }
 
   }
