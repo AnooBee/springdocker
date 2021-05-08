@@ -3,12 +3,7 @@ pipeline {
   stages {
     stage('json') {
       steps {
-        step{
-            echo 'start'
-            String inJson = '{"name": "kit"}'
-            echo inJson
-        }
-
+        echo 'start'
       }
     }
 
