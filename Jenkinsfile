@@ -4,6 +4,9 @@ pipeline {
     stage('json') {
       steps {
         echo 'start'
+        String inJson = '{"name": "kit"}'
+        echo inJson
+
       }
     }
 
