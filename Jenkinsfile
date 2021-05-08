@@ -15,11 +15,12 @@ pipeline {
                 assert props['name'] == 'kitsune'
                 props.each { key, value ->
                     echo "Walked through key $key and value $value"
+
                 }
 
-                String currName = "${props.artifacts.group}"
+                String currName = "${props.artifacts[1]}"
                 // The above code works...
-                echo ("group name: $currName")
+                echo currName
 
                 // The code below does not
                 props['artifacts[1]'] = "1.2.0"
