@@ -19,7 +19,7 @@ pipeline {
 
                 String currName = "${props.artifacts.group}"
                 // The above code works...
-                echo group name: $currName
+                echo ("group name: $currName)
 
                 // The code below does not
                 props['artifacts[1]'] = "1.2.0"
