@@ -1,3 +1,7 @@
+#!/usr/bin/env groovy
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+
 pipeline {
   agent any
   stages {
