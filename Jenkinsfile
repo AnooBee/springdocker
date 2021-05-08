@@ -11,7 +11,7 @@ pipeline {
      stage('read json') {
         steps {
             script {
-                def props = readJSON file: 'out.json', returnPojo: true
+                def props = readJSON file: 'out.json'
                 assert props['name'] == 'kitsune'
                 props.each { key, value ->
                     echo "Walked through key $key and value $value"
