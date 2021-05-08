@@ -12,15 +12,19 @@ pipeline {
         steps {
             script {
                 def props = readJSON file: 'out.json'
-                assert props['name'] == 'kitsune'
+                /*assert props['name'] == 'kitsune'
                 props.each { key, value ->
-                    echo "Walked through key $key and value $value"
-                    if ($key == "group")
-                        echo "group value is: $value"
+                    echo "Walked through key $key and value $value  "
+
+                }*/
+                for (element in props) {
+                    echo "$element.key : $element.value"
                 }
 
                 String currName = "${props.artifacts[1]}"
                 echo "group is: $currName"
+
+
 
                 // The code below does not
                 props['artifacts[1]'] = "1.2.0"
